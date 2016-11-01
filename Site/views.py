@@ -8,6 +8,6 @@ def  index(request):
 
 def  contacto(request):
 
-	print("En contacto")
+	
 
 	return render(request,'contacto.html')
