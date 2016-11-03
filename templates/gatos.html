@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block body %}
+	<h2>Gatos</h2>
+	</br>
+	<ul>
+	{% for gato in gatos %}
+		<li>{{gato.name}} - {{gato.age}} - {{gato.comida}} - {{gato.sexo}}</li>
+	{% endfor %}
+	</ul>
+	<h2>Cachorros</h2>
+	<ul>
+		{% for cachorro in cachorros %}
+			{{cachorro.name}} tiene la edad de {{cachorro.age}} años
+		{% endfor %}
+	</ul>
+	<h2>Comidas</h2>
+	{# {% for comida in comidas %}#}
+		{#{{comida}}#}
+	{#{% endfor %} #}
+		{{comidas}}
+	
+{% endblock body %}
