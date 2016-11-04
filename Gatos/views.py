@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from .models import Gato, Comida
+from .forms import GatoForm,ComidaForm
+
 
 def index(request):
 
@@ -31,20 +33,46 @@ def nuevo(request):
 
 	if request.method == "POST":
 
-		gato = Gatos()
+		form = GatoForm(request.POST)
 
-		gato.name = request.POST["name"]
-		gato.age = request.POST["age"]
-		gato.sexo = request.POST["sexo"]
+		if form.is_valid():
+
+			gato = Gato(name=form.cleaned_data["name"],age=form.cleaned_data["age"])
+			gato.name = form.cleaned_data["name"]
+			gato.age = form.cleaned_data["age"]
+			gato.sexo = form.cleaned_data["sexo"]
+			gato.callejero = form.cleaned_data["callejero"]
+			gato.comida = form.cleaned_data["comida"]
+
+			gato.save()
 	
 
-		return redirect('gatos-index')
+			return redirect('gatos-index')
+		return redirect('sites-index')
+
 
 
 	else:
-		comida = Comida.objects.all()
+		form = GatoForm()
 
-		return render(request,'nuevo_gato.html',{comida:comida})
+		return render(request,'nuevo_gato.html',{"form":form})
+
+
+def comida(request):
+
+	if request.method == "POST":
+		comida = ComidaForm(request.POST)
+
+		if comida.is_valid():
+
+			comida.save()
+
+		return redirect('gatos-index')
+	else:
+
+		form = ComidaForm()
+		return render(request,'nueva_comida.html',{"form":form})
+
 
 
 
