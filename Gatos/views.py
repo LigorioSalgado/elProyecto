@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from .models import Gato, Comida
@@ -26,6 +26,25 @@ def suma (request,x,y):
 	return HttpResponse(suma)
 
 
+def nuevo(request):
+
+
+	if request.method == "POST":
+
+		gato = Gatos()
+
+		gato.name = request.POST["name"]
+		gato.age = request.POST["age"]
+		gato.sexo = request.POST["sexo"]
+	
+
+		return redirect('gatos-index')
+
+
+	else:
+		comida = Comida.objects.all()
+
+		return render(request,'nuevo_gato.html',{comida:comida})
 
 
 
