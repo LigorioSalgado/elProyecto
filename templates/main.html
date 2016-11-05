@@ -10,6 +10,13 @@
 	</style>
 </head>
 <body>
+
+
+	{% if user.is_authenticated %}
+	<a href="{% url 'sites-logout' %}">Cerrar sesion</a>
+
+	{% endif  %}
+
 	{% block body %}
 		
 	{% endblock body %}

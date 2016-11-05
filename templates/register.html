@@ -1,0 +1,15 @@
+{% extends "main.html"  %}
+{% block body %}
+
+	<form action="{% url 'sites-register' %}"method="POST" >
+		{% csrf_token %}
+
+		{{form}}
+
+		<input type="submit">
+
+
+	</form>
+
+
+{% endblock body %}
