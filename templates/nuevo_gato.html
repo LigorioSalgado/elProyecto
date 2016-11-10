@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block body %}
+	<form action="{% url 'gatos-nuevo' %}" method="POST" > 
+	{% csrf_token %}
+			<!--label for="name">Nombre: <input type="text" placeholder="Name" name="name"></label>
+			<label for="age">Edad: <input type="number" placeholder="Age" name="age"></label>
+			<label for="sexo"> Sexo: 
+			<select name="sexo" id="">
+				<option value="M">Masculino</option>
+				<option value="F">Femenino</option>
+			</select>
+			</label>
+
+			<label for="callejero">
+				Es callgero? <input type="checkbox"> 
+			</label>
+			<label for="Comida"></label>
+			<select name="comida" id="">
+
+			{% for c in comida %}
+				<option value="{{c.tipo}}">{{c.tipo}}</option>	
+
+			{% endfor  %}
+
+			</select!-->
+		{{form}}
+		<input type="submit">
+		
+	</form>
+	
+{% endblock body %}

@@ -2,6 +2,7 @@
 {% block body %}
 	<h2>Gatos</h2>
 	</br>
+	<button><a href="{% url 'gatos-nuevo' %}">Nuevo gato</a></button>
 	<ul>
 	{% for gato in gatos %}
 		<li>{{gato.name}} - {{gato.age}} - {{gato.comida}} - {{gato.sexo}}</li>
