@@ -1,9 +1,34 @@
+from django.views.generic import TemplateView, ListView, DetailView, DeleteView, UpdateView, CreateView
+from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, redirect
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from .models import Gato, Comida
 from .forms import GatoForm,ComidaForm
 
+class GatoTemplateView(TemplateView):
+	template_name = "about.html"
+
+class GatoListView(ListView):
+	model = Gato
+	context_object_name = "gatos"
+
+class GatoDetailView(DetailView):
+	model = Gato
+
+class GatoDeleteView(DeleteView):
+	model = Gato
+	success_url = "/gatos/listado/"
+
+class GatoUpdateView(UpdateView):
+	model = Gato
+	fields = ["name", "age"]
+	success_url = "/gatos/listado/"
+
+class GatoCreateView(CreateView):
+	model = Gato
+	fields = ["name","age","callejero", "sexo", "comida"]
+	success_url = "/gatos/listado/"
 
 def index(request):
 

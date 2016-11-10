@@ -1,0 +1,8 @@
+{% extends "main.html" %}
+{% block body %}
+	<form action="", method="post">
+		{% csrf_token %}
+		<p>Estás segurisísimo cabron? si la cagas no hay rollback, y vas a eliminar a {{object}}</p>
+		<input type="submit" value="Eliminar">
+	</form>
+{% endblock body %}

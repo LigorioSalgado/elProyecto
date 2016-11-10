@@ -1,0 +1,8 @@
+{% extends "main.html" %}
+{% block body %}
+	<ul>
+		{% for gato in gatos  %}
+			<li>{{gato.name}} <a href="{% url 'detalle-gatos' gato.id %}"> Detalle </a> - <a href="{% url 'delete-gatos' gato.id %}"> Eliminar </a> - <a href="{% url 'update-gatos' gato.id %}"> Update </a> </li>
+		{% endfor %}
+	</ul>
+{% endblock body %}
